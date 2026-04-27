@@ -132,8 +132,42 @@ void xoaSinhVienTrungNgaySinh(List &ds) {
             }
         }
     }
-}
 
+// xóa các sinh viên có ngày sinh trùng
+    Node* p = ds.first;
+    Node* prev = NULL;
+
+    while (p != NULL) {
+        bool canXoa = false;
+
+        for (int i = 0; i < dem; i++) {
+            if (p->data.ngaySinh.ngay == trung[i].ngay &&
+                p->data.ngaySinh.thang == trung[i].thang &&
+                p->data.ngaySinh.nam == trung[i].nam) {
+                canXoa = true;
+                break;
+            }
+        }
+
+        if (canXoa) {
+            Node* tmp = p;
+            if (p == ds.first) {
+                ds.first = p->link;
+                p = ds.first;
+                prev = NULL;
+                if (ds.first == NULL) ds.last = NULL;
+            } else {
+                prev->link = p->link;
+                if (p == ds.last) ds.last = prev;
+                p = prev->link;
+            }
+            delete tmp;
+        } else {
+            prev = p;
+            p = p->link;
+        }
+    }
+}
 int main() {
      List dsSV;
     khoiTao(dsSV);
