@@ -3,7 +3,7 @@
 * DS sinh viên rỗng, in ra rỗng.   
 * DS sinh viên không rỗng, không có svien trùng ngày tháng năm sinh, in ra danh sách.   
 * DS sinh viên không rỗng, có sinh viên trùng ngày tháng năm sinh, xóa sinh viên, in lại danh sách sinh viên.   
-
+* Thêm một sinh viên mới vào danh sách ListSV đã sắp xếp và SV được sắp xếp theo đúng thứ tự ở DS mới( tích hợp chung với case3)
 ## II. Bài nâng cao(Bài toán Josephus)
 
 ### 1. Thiết kế giải thuật
