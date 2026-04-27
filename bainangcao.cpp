@@ -64,3 +64,25 @@ void timNguoiThang(Node* dau, int m) {
     cout << "\nNguoi con lai la: " << hienTai->data << endl;
     delete hienTai;
 }
+int main() {
+    int n, m;
+    cout << "Nhap so nguoi N: ";
+    cin >> n;
+    cout << "Nhap so luot truyen M: ";
+    cin >> m;
+
+    Node* danhSach = taoDanhSachVong(n);
+
+    // đo thời gian
+    auto start = chrono::high_resolution_clock::now();
+
+    timNguoiThang(danhSach, m);
+
+    auto end = chrono::high_resolution_clock::now();
+
+    double thoiGian = chrono::duration<double>(end - start).count();
+
+    cout << "\nThoi gian chay: " << thoiGian << " s" << endl;
+
+    return 0;
+}
