@@ -79,7 +79,60 @@ void xuatDanhSach(List ds) {
         p = p->link;
     }
 }
+// In sinh viên trùng ngày sinh
+void inSinhVienTrungNgaySinh(List ds) {
+    bool co = false;
+    for (Node* p = ds.first; p != NULL; p = p->link) {
+        bool trung = false;
+        for (Node* q = ds.first; q != NULL; q = q->link) {
+            if (p != q &&
+                p->data.ngaySinh.ngay == q->data.ngaySinh.ngay &&
+                p->data.ngaySinh.thang == q->data.ngaySinh.thang &&
+                p->data.ngaySinh.nam == q->data.ngaySinh.nam) {
+                trung = true;
+                break;
+            }
+        }
+        if (trung) {
+            xuatSinhVien(p->data);
+            co = true;
+        }
+    }
+    if (!co) cout << "khong co sinh vien trung ngay sinh\n";
+}
 
+
+//Xóa sinh viên trùng ngày sinh
+void xoaSinhVienTrungNgaySinh(List &ds) {
+    if (ds.first == NULL) return;
+
+    //lưu các ngày sinh bị trùng
+    Ngay trung[100];
+    int dem = 0;
+
+    for (Node* p = ds.first; p != NULL; p = p->link) {
+        for (Node* q = p->link; q != NULL; q = q->link) {
+            if (p->data.ngaySinh.ngay == q->data.ngaySinh.ngay &&
+                p->data.ngaySinh.thang == q->data.ngaySinh.thang &&
+                p->data.ngaySinh.nam == q->data.ngaySinh.nam) {
+
+                bool daCo = false;
+                for (int i = 0; i < dem; i++) {
+                    if (trung[i].ngay == p->data.ngaySinh.ngay &&
+                        trung[i].thang == p->data.ngaySinh.thang &&
+                        trung[i].nam == p->data.ngaySinh.nam) {
+                        daCo = true;
+                        break;
+                    }
+                }
+
+                if (!daCo) {
+                    trung[dem++] = p->data.ngaySinh;
+                }
+            }
+        }
+    }
+}
 
 int main() {
      List dsSV;
