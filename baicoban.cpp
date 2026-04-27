@@ -176,5 +176,35 @@ int main() {
     cout << "CASE 1: DANH SACH TRONG\n";
     xuatDanhSach(dsSV);
     xuatDanhSach(dsSV);
+     // CASE 2
+    cout << "\nCASE 2: KHONG TRUNG\n";
+    SinhVien s1 = {"2023001", "A", 0, {1,1,2005}, "", "L1", "CNTT"};
+    SinhVien s2 = {"2023002", "B", 1, {2,2,2005}, "", "L2", "Dien"};
+    themCoThuTu(dsSV, s1);
+    themCoThuTu(dsSV, s2);
+
+    xuatDanhSach(dsSV);
+    inSinhVienTrungNgaySinh(dsSV);
+
+    // CASE 3
+    cout << "\nCASE 3: CO TRUNG \n"; // danh sách có svien trùng ngày sinh
+    SinhVien s3 = {"2023005", "C", 0, {1,1,2005}, "", "L1", "CNTT"};
+    SinhVien s4 = {"2023003", "D", 0, {3,3,2005}, "", "L3", "KT"};
+    SinhVien s5 = {"2023004", "E", 1, {3,3,2005}, "", "L3", "KT"};
+
+    themCoThuTu(dsSV, s3);
+    themCoThuTu(dsSV, s4);
+    themCoThuTu(dsSV, s5);
+
+    cout << "Truoc khi xoa:\n";
+    xuatDanhSach(dsSV);
+
+    cout << "Sinh vien trung:\n"; //sinh viên trùng
+    inSinhVienTrungNgaySinh(dsSV);
+
+    xoaSinhVienTrungNgaySinh(dsSV);
+
+    cout << "Sau khi xoa:\n";
+    xuatDanhSach(dsSV);
      return 0;
 }
